@@ -1,10 +1,10 @@
 import Layout from './Layout';
-import Home from './Home';
-import PostPage from './PostPage';
-import NewPost from './NewPost';
-import EditPost from './EditPost';
-import About from './About';
-import Missing from './Missing';
+import Home from './pages/Home';
+import PostPage from './pages/PostPage';
+import NewPost from './pages/NewPost';
+import EditPost from './pages/EditPost';
+import About from './pages/About';
+import Missing from './pages/Missing';
 
 import { Routes, Route } from 'react-router';
 import useAxiosFetch from './hooks/useAxiosFetch';
