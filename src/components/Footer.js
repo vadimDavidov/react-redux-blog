@@ -1,7 +1,11 @@
+import { useStoreState } from 'easy-peasy';
+
 function Footer() {
-  const today = new Date();
+  const postCount = useStoreState(state => state.postCount);
   return (
-    <footer className="Footer">Copyright &copy; {today.getFullYear()}</footer>
+    <footer className="Footer">
+      <p>{postCount} Blog Posts</p>
+    </footer>
   );
 }
 

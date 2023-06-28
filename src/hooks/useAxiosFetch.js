@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function useAxiosFetch() {
+function useAxiosFetch(dataUrl) {
   const [data, setData] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
-    const fetchData = async () => {
+    const source = axios.CancelToken.source();
+
+    const fetchData = async url => {
+      setIsLoading(true);
       try {
-        setIsLoading(true);
-        const response = await axios.get('http://localhost:3500/posts');
+        const response = await axios.get(url, { cancelToken: source.token });
         if (isMounted) {
           setData(response.data);
           setFetchError(null);
@@ -25,13 +27,14 @@ function useAxiosFetch() {
         isMounted && setIsLoading(false);
       }
     };
-    fetchData();
+    fetchData(dataUrl);
 
     const cleaUp = () => {
       isMounted = false;
+      source.cancel();
     };
     return cleaUp;
-  }, []);
+  }, [dataUrl]);
 
   return { data, fetchError, isLoading };
 }

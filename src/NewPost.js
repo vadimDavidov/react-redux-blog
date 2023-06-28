@@ -1,26 +1,23 @@
-import { useState } from 'react';
-import { useContext } from 'react';
-import DataContext from './context/useDataContext';
+import { format } from 'date-fns';
+import { useNavigate } from 'react-router';
+import { useStoreState, useStoreActions } from 'easy-peasy';
 
 function NewPost() {
-  const { navigate, datetime, api, posts, setPosts } = useContext(DataContext);
-  const [postTitle, setPostTitle] = useState('');
-  const [postBody, setPostBody] = useState('');
+  const navigate = useNavigate();
+  const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+  const posts = useStoreState(state => state.posts);
+  const postTitle = useStoreState(state => state.postTitle);
+  const setPostTitle = useStoreActions(actions => actions.setPostTitle);
+  const postBody = useStoreState(state => state.postBody);
+  const setPostBody = useStoreActions(actions => actions.setPostBody);
+  const savePost = useStoreActions(actions => actions.savePost);
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
     const newPost = { id, title: postTitle, datetime, body: postBody };
-    try {
-      const response = await api.post('/posts', newPost);
-      const allPosts = [...posts, response.data];
-      setPosts(allPosts);
-      setPostTitle('');
-      setPostBody('');
-      navigate('/');
-    } catch (error) {
-      console.log(`Error POST: ${error.message}`);
-    }
+    savePost(newPost);
+    navigate('/');
   };
 
   return (
@@ -44,7 +41,7 @@ function NewPost() {
           value={postBody}
           onChange={e => setPostBody(e.target.value)}
         />
-        <button>Submit</button>
+        <button className="submit">Submit</button>
       </form>
     </main>
   );

@@ -1,11 +1,8 @@
-import { useContext } from 'react';
-import DataContext from './context/useDataContext';
 import Feed from './components/Feed';
-import useAxiosFetch from './hooks/useAxiosFetch';
+import { useStoreState } from 'easy-peasy';
 
-function Home() {
-  const { searchResults } = useContext(DataContext);
-  const { fetchError, isLoading } = useAxiosFetch();
+function Home({ fetchError, isLoading }) {
+  const searchResults = useStoreState(state => state.searchResults);
 
   return (
     <main className="Home">
