@@ -3,6 +3,8 @@ import Home from './Home';
 import PostPage from './PostPage';
 import NewPost from './NewPost';
 import EditPost from './EditPost';
+import About from './About';
+import Missing from './Missing';
 
 import { Routes, Route } from 'react-router';
 import { DataProvider } from './context/useDataContext';
@@ -19,6 +21,8 @@ function App() {
               <Route path=":id" element={<PostPage />} />
             </Route>
             <Route path="edit/:id" element={<EditPost />} />
+            <Route path="about" element={<About />} />
+            <Route path="*" element={<Missing />} />
           </Route>
         </Routes>
       </DataProvider>
