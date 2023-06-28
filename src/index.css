@@ -1,13 +1,197 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #efefef;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  display: flex;
+}
+
+button {
+  min-width: 7rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  margin: 2rem 1rem 0 0;
+  background-color: steelblue;
+  font-size: 1rem;
+  font-weight: 500;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  box-shadow: 0 0 7px gray;
+  filter: brightness(120%);
+}
+
+ul,
+li,
+a {
+  text-decoration: none;
+  list-style: none;
+  color: #333;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  outline: none;
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 7px gray;
+}
+
+#root {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  background-color: #fff;
+  border: 1px solid #333;
+  box-shadow: 0 0 15px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Layout {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.Header {
+  background-color: steelblue;
+  color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.svg {
+  font-size: 2rem;
+}
+
+.Nav {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #333;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Nav label {
+  position: absolute;
+  left: -99999px;
+}
+
+.Nav input {
+  width: 80%;
+  margin: 1rem;
+}
+
+.Nav ul {
+  display: flex;
+}
+
+.Nav a {
+  padding: 1rem;
+  color: aliceblue;
+}
+
+.Nav a:hover,
+a:focus {
+  background-color: aliceblue;
+  color: #333;
+}
+
+.Footer {
+  display: grid;
+  place-content: center;
+  background-color: steelblue;
+  color: aliceblue;
+  padding: 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.Post {
+  padding: 1rem 0;
+}
+
+.postTitle {
+  margin-bottom: 1rem;
+}
+
+.postDate {
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+}
+
+.postBody {
+  padding: 1rem 0;
+}
+
+.deleteButton {
+  background-color: red;
+}
+
+.NewPost label {
+  margin-bottom: 1rem;
+}
+
+.NewPost input,
+textarea {
+  border: 1px solid #333;
+  margin-bottom: 1rem;
+}
+
+.NewPost input:focus,
+textarea:focus {
+  box-shadow: 0 0 7px gray;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 896px) {
+  .Nav {
+    flex-wrap: wrap;
+  }
+  .Nav ul {
+    margin-bottom: 1rem;
+  }
 }
