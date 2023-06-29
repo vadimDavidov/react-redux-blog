@@ -20,8 +20,8 @@ button {
   padding: 1rem;
   border: none;
   border-radius: 0.25rem;
-  margin: 2rem 1rem 0 0;
-  background-color: steelblue;
+  margin-top: 2rem;
+  background-color: cadetblue;
   font-size: 1rem;
   font-weight: 500;
   color: aliceblue;
@@ -136,6 +136,9 @@ a:focus {
   background-color: steelblue;
   color: aliceblue;
   padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 main {
@@ -165,6 +168,7 @@ main {
 
 .deleteButton {
   background-color: red;
+  margin-left: 1rem;
 }
 
 .NewPost label {
