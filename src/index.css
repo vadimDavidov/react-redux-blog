@@ -141,6 +141,14 @@ a:focus {
   align-items: center;
 }
 
+.Footer a {
+  color: aliceblue;
+}
+
+.Footer a:focus {
+  background: transparent;
+}
+
 main {
   display: flex;
   flex-direction: column;
